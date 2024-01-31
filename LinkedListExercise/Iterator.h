@@ -24,41 +24,42 @@ private:
 template<typename AnyType>
 inline Iterator<AnyType>::Iterator()
 {
+	m_current = nullptr;
 }
 
 template<typename AnyType>
 inline Iterator<AnyType>::Iterator(Node<AnyType>* node)
 {
-
+	m_current = node;
 }
 
 template<typename AnyType>
 inline Iterator<AnyType> Iterator<AnyType>::operator++()
 {
-	int i = 0;
-	return Iterator<AnyType>(i++);
+	return Iterator<AnyType>(m_current++);
 }
 
 template<typename AnyType>
 inline Iterator<AnyType> Iterator<AnyType>::operator--()
 {
-	return Iterator<AnyType>(this -= 1);
+	return Iterator<AnyType>(m_current--);
 }
 
 template<typename AnyType>
 inline const bool Iterator<AnyType>::operator==(const Iterator<AnyType>& iter)
 {
-	return false;
+	return this->m_current == iter.m_current;
 }
 
 template<typename AnyType>
 inline const bool Iterator<AnyType>::operator!=(const Iterator<AnyType>& iter)
 {
-	return false;
+
+	return this->m_current != iter.m_current;
 }
 
 template<typename AnyType>
 inline AnyType Iterator<AnyType>::operator*()
 {
-	return AnyType();
+	return AnyType(this->m_current);
 }

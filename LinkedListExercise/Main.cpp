@@ -2,7 +2,7 @@
 
 int main()
 {
-	LinkedList<Node<int>> test;
+	LinkedList<int> test = LinkedList<int>();
 
 	test.insert(10, 0);
 	test.print();

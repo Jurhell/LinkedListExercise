@@ -7,8 +7,8 @@ public:
 	Node();
 	Node(AnyType value);
 
-	Node<AnyType>* next();
-	Node<AnyType>* previous();
+	Node<AnyType>* next;
+	Node<AnyType>* previous;
 
 	AnyType data();
 };
@@ -17,23 +17,13 @@ public:
 template<typename AnyType>
 inline Node<AnyType>::Node()
 {
+	next = nullptr;
+	previous = nullptr;
 }
 
 template<typename AnyType>
 inline Node<AnyType>::Node(AnyType value)
 {
-}
-
-template<typename AnyType>
-inline Node<AnyType>* Node<AnyType>::next()
-{
-	return nullptr;
-}
-
-template<typename AnyType>
-inline Node<AnyType>* Node<AnyType>::previous()
-{
-	return nullptr;
 }
 
 template<typename AnyType>
