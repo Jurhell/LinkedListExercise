@@ -3,6 +3,7 @@
 template<typename AnyType>
 class Node
 {
+	//Declaring Constructors and Variables
 public:
 	Node();
 	Node(AnyType value);
@@ -10,10 +11,10 @@ public:
 	Node<AnyType>* next;
 	Node<AnyType>* previous;
 
-	AnyType data();
+	AnyType data;
 };
 
-//Function Definitions
+//Declaring Constructors
 template<typename AnyType>
 inline Node<AnyType>::Node()
 {
@@ -24,10 +25,8 @@ inline Node<AnyType>::Node()
 template<typename AnyType>
 inline Node<AnyType>::Node(AnyType value)
 {
+	next = nullptr;
+	previous = nullptr;
+	data = value;
 }
 
-template<typename AnyType>
-inline AnyType Node<AnyType>::data()
-{
-	return AnyType();
-}
