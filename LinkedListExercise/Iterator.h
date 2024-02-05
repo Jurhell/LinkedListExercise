@@ -43,7 +43,14 @@ inline Iterator<AnyType>::Iterator(Node<AnyType>* node)
 template<typename AnyType>
 inline Iterator<AnyType> Iterator<AnyType>::operator++()
 {
-	Iterator<AnyType> iter = Iterator<AnyType>(m_current->next);
+	if (m_current)
+	{
+		Iterator<AnyType> iter = Iterator<AnyType>(m_current->next);
+		m_current = m_current->next;
+		return iter;
+	}
+
+	Iterator<AnyType> iter = Iterator<AnyType>(nullptr);
 	return iter;
 }
 
@@ -54,8 +61,8 @@ inline Iterator<AnyType> Iterator<AnyType>::operator++()
 template<typename AnyType>
 inline Iterator<AnyType> Iterator<AnyType>::operator--()
 {
-	Iterator<AnyType> iter = Iterator<AnyType>(m_current->previous);
-	return iter;
+	m_current = m_current->previous;
+	return *this;
 }
 
 /// <summary>
@@ -89,8 +96,5 @@ inline const bool Iterator<AnyType>::operator!=(const Iterator<AnyType>& iter)
 template<typename AnyType>
 inline AnyType Iterator<AnyType>::operator*()
 {
-	//if (m_current == nullptr)
-	//	m_current = ;
-
 	return m_current->data;
 }
