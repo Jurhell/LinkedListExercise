@@ -128,7 +128,7 @@ inline AnyType LinkedList<AnyType>::last() const
 template<typename AnyType>
 inline bool LinkedList<AnyType>::contains(const AnyType value) const
 {
-	for (Iterator<int>iter = begin(); iter != end(); ++iter)
+	for (Iterator<AnyType>iter = begin(); iter != end(); ++iter)
 	{
 		if (*iter == value)
 			return true;
@@ -311,7 +311,7 @@ inline void LinkedList<AnyType>::initialize()
 template<typename AnyType>
 inline bool LinkedList<AnyType>::isEmpty() const
 {
-	for (Iterator<int>iter = begin(); iter != end(); ++iter)
+	for (Iterator<AnyType>iter = begin(); iter != end(); ++iter)
 	{
 		if (m_first->next == nullptr && m_last->previous == nullptr)
 			return true;
@@ -325,7 +325,7 @@ inline bool LinkedList<AnyType>::getData(Iterator<AnyType>& iter, int index)
 {
 	int nodeIndex = 0;
 
-	for (Iterator<int>iter2 = begin(); iter2 != end(); ++iter2)
+	for (Iterator<AnyType>iter2 = begin(); iter2 != end(); ++iter2)
 	{
 		nodeIndex++;
 		if (index == nodeIndex)
@@ -342,7 +342,7 @@ inline int LinkedList<AnyType>::getLength() const
 {
 	int nodeIndex = 0;
 
-	for (Iterator<int>iter = begin(); iter != end(); ++iter)
+	for (Iterator<AnyType>iter = begin(); iter != end(); ++iter)
 		nodeIndex++;
 	
 	return nodeIndex;
