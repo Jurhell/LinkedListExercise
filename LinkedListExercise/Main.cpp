@@ -3,6 +3,7 @@
 int main()
 {
 	LinkedList<int> test = LinkedList<int>();
+	LinkedList<int> test2 = LinkedList<int>();
 	
 	test.pushBack(5);
 	test.pushFront(4);
@@ -10,9 +11,10 @@ int main()
 	test.pushFront(2);
 	test.pushFront(1);
 
-	test.destroy();
+	//test.destroy();
+	test2 = test;
 
-	test.print();
+	test2.print();
 
 	return 0;
 }
