@@ -311,12 +311,15 @@ inline void LinkedList<AnyType>::initialize()
 template<typename AnyType>
 inline bool LinkedList<AnyType>::isEmpty() const
 {
-	for (Iterator<AnyType>iter = begin(); iter != end(); ++iter)
+	if (m_nodeCount < 1)
 	{
-		if (m_first->next == nullptr && m_last->previous == nullptr)
-			return true;
-		else
-	        return false;
+		cout << "Empty" << endl;
+		return true;
+	}
+	else
+	{
+		cout << "Occuppied" << endl;
+		return false;
 	}
 }
 
@@ -352,6 +355,7 @@ template<typename AnyType>
 inline void LinkedList<AnyType>::operator=(const LinkedList<AnyType>& otherList)
 {
 	*this = otherList;
+	//for loop, set every item from the list
 }
 
 template<typename AnyType>
