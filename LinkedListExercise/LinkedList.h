@@ -59,13 +59,13 @@ inline LinkedList<AnyType>::LinkedList()
 template<typename AnyType>
 inline LinkedList<AnyType>::LinkedList(const LinkedList<AnyType>& other)
 {
-	*this = other;
-
 	m_first = other.m_first;
 	m_last = other.m_last;
 
-	for (Iterator<int>iter = begin(); iter != end(); ++iter)
+	for (Iterator<int>iter = other.begin(); iter != other.end(); ++iter)
 		pushBack(*iter);
+
+	m_nodeCount = other.getLength();
 }
 
 template<typename AnyType>
@@ -295,9 +295,9 @@ template<typename AnyType>
 inline void LinkedList<AnyType>::print() const
 {
 	for (Iterator<AnyType>iter = begin(); iter != end(); ++iter)
-	{
 		cout << *iter << endl;
-	}
+
+		cout << m_nodeCount << endl;
 }
 
 template<typename AnyType>
@@ -354,8 +354,9 @@ inline int LinkedList<AnyType>::getLength() const
 template<typename AnyType>
 inline void LinkedList<AnyType>::operator=(const LinkedList<AnyType>& otherList)
 {
-	*this = otherList;
 	//for loop, set every item from the list
+	for (Iterator<AnyType>iter = otherList.begin(); iter != otherList.end(); ++iter)
+		pushBack(*iter);
 }
 
 template<typename AnyType>

@@ -18,10 +18,10 @@ int main()
 
 	//test.getData(three, 3);
 	//test.destroy();
-	//test2 = LinkedList<int>(test);
-	test2 = test;
+	test2 = LinkedList<int>(test);
+	//test2 = test;
 
-	//test2.print();
+	test2.print();
 
 	return 0;
 }
