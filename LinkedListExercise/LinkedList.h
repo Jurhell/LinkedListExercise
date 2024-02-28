@@ -63,9 +63,10 @@ inline LinkedList<AnyType>::LinkedList(const LinkedList<AnyType>& other)
 	m_last = other.m_last;
 
 	for (Iterator<int>iter = other.begin(); iter != other.end(); ++iter)
+	{
+		popBack();
 		pushBack(*iter);
-
-	m_nodeCount = other.getLength();
+	}
 }
 
 template<typename AnyType>
@@ -297,7 +298,7 @@ inline void LinkedList<AnyType>::print() const
 	for (Iterator<AnyType>iter = begin(); iter != end(); ++iter)
 		cout << *iter << endl;
 
-		cout << m_nodeCount << endl;
+		cout << "Node Count: " << m_nodeCount << endl;
 }
 
 template<typename AnyType>
@@ -313,12 +314,12 @@ inline bool LinkedList<AnyType>::isEmpty() const
 {
 	if (m_nodeCount < 1)
 	{
-		cout << "Empty" << endl;
+		cout << "List Is Empty" << endl;
 		return true;
 	}
 	else
 	{
-		cout << "Occuppied" << endl;
+		cout << "List Is Not Empty" << endl;
 		return false;
 	}
 }
@@ -333,7 +334,8 @@ inline bool LinkedList<AnyType>::getData(Iterator<AnyType>& iter, int index)
 		nodeIndex++;
 		if (index == nodeIndex)
 		{
-			Iterator<AnyType>* newIt = new Iterator<AnyType>(iter);
+			Iterator<AnyType>* newIt = new Iterator<AnyType>(iter2);
+			std::cout << "getData return: " << *iter2 << std::endl;
 			return true;
 		}
 	}
@@ -354,7 +356,6 @@ inline int LinkedList<AnyType>::getLength() const
 template<typename AnyType>
 inline void LinkedList<AnyType>::operator=(const LinkedList<AnyType>& otherList)
 {
-	//for loop, set every item from the list
 	for (Iterator<AnyType>iter = otherList.begin(); iter != otherList.end(); ++iter)
 		pushBack(*iter);
 }
